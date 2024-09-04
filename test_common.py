@@ -1,7 +1,6 @@
 from hello import app
 
-with app.test_client() as c:
-    response = c.get("/")
-    assert response.data == b"<p>Hello, World!</p>"
+def test_hello_world():
+    response = app.test_client().get('/')
     assert response.status_code == 200
-    print('Test passed!')
+    assert response.data == b"<p>Hello, World!</p>"
